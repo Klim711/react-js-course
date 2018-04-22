@@ -25,7 +25,8 @@
   "scripts": {
     "start": "webpack-dev-server --open",
     "build:prod": "set NODE_ENV=production && webpack -p",
-    "build:dev": "webpack"
+    "build:dev": "webpack",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
