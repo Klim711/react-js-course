@@ -1,5 +1,7 @@
 const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+const webpack = require('webpack');
+const NODE_ENV = process.env.NODE_ENV || 'development';
 
 module.exports = {
   entry: ["./src/js/app.js"],
@@ -7,6 +9,7 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     filename: "js/[name].js"
   },
+  devtool: NODE_ENV === 'development' ? 'eval' : false,
   devServer: {
     contentBase: "./dist"
   },
@@ -33,6 +36,9 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: "./src/index.html",
       filename: "./index.html"
+    }),
+    new webpack.EnvironmentPlugin({
+      NODE_ENV: NODE_ENV
     })
   ]
 };
