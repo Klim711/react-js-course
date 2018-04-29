@@ -9,6 +9,7 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     filename: "js/[name].js"
   },
+  mode: NODE_ENV,
   devtool: NODE_ENV === 'development' ? 'eval' : false,
   devServer: {
     contentBase: "./dist"
