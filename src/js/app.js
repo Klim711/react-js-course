@@ -1,6 +1,4 @@
-import "./components/Title";
 import  "./components/Container";
-
 
 if (process.env.NODE_ENV === 'development') {
     console.log('Welcome to development');
