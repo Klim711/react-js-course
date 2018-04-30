@@ -9,6 +9,7 @@ export default class Header extends Component {
         <h1 className="title">netflixroulette</h1>
 
         <Search filter={this.props.filter}
+                filters={this.props.filters}
                 setSearchFilter={this.props.setSearchFilter}
                 setSearchValue={this.props.setSearchValue}/>
       </header>
