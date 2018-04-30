@@ -1,0 +1,10 @@
+@import '../../../styles/constants.scss';
+
+.page-footer {
+    background-color: $footer-color;
+}
+
+.row.page-footer {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
