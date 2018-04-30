@@ -1,0 +1,9 @@
+main.films {
+    flex: 1;
+}
+
+.items-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}

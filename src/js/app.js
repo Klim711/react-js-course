@@ -1,4 +1,5 @@
-import  "./components/Container";
+import  './components/Container/Container';
+import '../styles/common.scss';
 
 if (process.env.NODE_ENV === 'development') {
     console.log('Welcome to development');

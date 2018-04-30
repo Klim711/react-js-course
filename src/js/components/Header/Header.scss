@@ -1,3 +1,6 @@
+@import '../../../styles/constants.scss';
+
 .page-header {
-    height: 200px;
+    background-color: $footer-color;
+    color: $white;
 }

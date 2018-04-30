@@ -1,0 +1,19 @@
+@import './constants.scss';
+
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+}
+
+.row {
+    padding: 30px 80px;
+}
+
+.title {
+    color: $red;
+    font-size: 18px;
+    font-weight: bold;
+}
