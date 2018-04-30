@@ -5,8 +5,8 @@ import './Header.scss';
 export default class Header extends Component {
   render() {
     return (
-      <header className="page-header">
-        <h1>netflixroulette</h1>
+      <header className="row page-header">
+        <h1 className="title">netflixroulette</h1>
 
         <Search filter={this.props.filter}
                 setSearchFilter={this.props.setSearchFilter}
