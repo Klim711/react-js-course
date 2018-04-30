@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
+import ErrorBoundarry from '../ErrorBoundary';
 import './Container.scss';
 
 const IMAGE_URL = 'https://ia.media-imdb.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_UX182_CR0,0,182,268_AL_.jpg';
@@ -72,6 +73,7 @@ class Container extends Component {
   }
   render() {
     return (
+      <ErrorBoundarry>
       <div className="container">
         <Header filter={this.state.filter}
                 filters={this.state.filters}
@@ -83,6 +85,7 @@ class Container extends Component {
               setSorting={this.setSorting}/>
         <Footer content="FOOTER"/>
       </div>
+      </ErrorBoundarry>
     );
   }
 }
