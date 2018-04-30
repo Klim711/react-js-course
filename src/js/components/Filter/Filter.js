@@ -10,11 +10,20 @@ export default class Filter extends Component {
     this.props.setSearchFilter(event.target.value);
   }
   render () {
+    const filters = ['title', 'genre'].map((filter) => {
+      let className = (filter === this.props.value) ? 'active' : '';
+
+      return (
+        <button className={className} value={filter} onClick={this.filterBy}>
+          {filter}
+        </button>
+      );
+    });
+
     return (
         <div className="search__filter">
           Search By
-          <button value="title" onClick={this.filterBy}>Title</button>
-          <button value="genre" onClick={this.filterBy}>Genre</button>
+          {filters}
         </div>
     );
   }
