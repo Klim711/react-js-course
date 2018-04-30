@@ -18,8 +18,10 @@ export default class Search extends Component {
 
           <input type="text" ref={(input) => this.input = input}></input>
           <div className="search-buttons">
-            <Filter value={this.props.filter}
-                    setSearchFilter={this.props.setSearchFilter}/>
+            <Filter content="Search By"
+                    value={this.props.filter}
+                    items={this.props.filters}
+                    setActive={this.props.setSearchFilter}/>
             <button onClick={this.search}>Search</button>
           </div>
         </div>

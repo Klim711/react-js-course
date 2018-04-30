@@ -4,26 +4,26 @@ export default class Filter extends Component {
   constructor() {
     super();
 
-    this.filterBy = this.filterBy.bind(this);
+    this.setActive = this.setActive.bind(this);
   }
-  filterBy(event) {
-    this.props.setSearchFilter(event.target.value);
+  setActive(event) {
+    this.props.setActive(event.target.value);
   }
   render () {
-    const filters = ['title', 'genre'].map((filter) => {
-      let className = (filter === this.props.value) ? 'active' : '';
+    const items = this.props.items.map((item) => {
+      let className = (item === this.props.value) ? 'active' : '';
 
       return (
-        <button className={className} value={filter} onClick={this.filterBy}>
-          {filter}
+        <button className={className} value={item} onClick={this.setActive}>
+          {item}
         </button>
       );
     });
 
     return (
         <div className="search__filter">
-          Search By
-          {filters}
+          <span className="search__filter__title">{this.props.content}</span>
+          {items}
         </div>
     );
   }
