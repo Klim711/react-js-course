@@ -9,11 +9,16 @@ body {
 }
 
 .row {
-    padding: 30px 80px;
+    padding: 0 80px;
 }
 
 .title {
     color: $red;
     font-size: 18px;
     font-weight: bold;
+}
+
+button {
+    cursor: pointer;
+    outline: none;
 }
