@@ -22,7 +22,7 @@ export default class Search extends Component {
                     value={this.props.filter}
                     items={this.props.filters}
                     setActive={this.props.setSearchFilter}/>
-            <button onClick={this.search}>Search</button>
+            <button className="btn" onClick={this.search}>Search</button>
           </div>
         </div>
     );
