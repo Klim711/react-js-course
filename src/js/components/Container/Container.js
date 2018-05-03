@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
 import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
-import ErrorBoundarry from '../ErrorBoundary';
 import './Container.scss';
 import ITEMS from '../../items';
 
@@ -52,7 +50,6 @@ class Container extends Component {
   }
   render() {
     return (
-      <ErrorBoundarry>
       <div className="container">
         <Header filter={this.state.filter}
                 filters={this.state.filters}
@@ -64,10 +61,7 @@ class Container extends Component {
               setSorting={this.setSorting}/>
         <Footer content="FOOTER"/>
       </div>
-      </ErrorBoundarry>
     );
   }
 }
 export default Container;
-
-ReactDOM.render(<Container/>, document.getElementById("container"));
