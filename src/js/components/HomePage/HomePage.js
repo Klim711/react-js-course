@@ -2,10 +2,9 @@ import React, {Component} from 'react';
 import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
-import './Container.scss';
 import ITEMS from '../../items';
 
-class Container extends Component {
+class HomePage extends Component {
   constructor() {
     super();
 
@@ -64,4 +63,4 @@ class Container extends Component {
     );
   }
 }
-export default Container;
+export default HomePage;

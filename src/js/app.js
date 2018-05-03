@@ -1,4 +1,4 @@
-import Container from './components/Container/Container';
+import HomePage from './components/HomePage/HomePage';
 import '../styles/common.scss';
 import ReactDOM from 'react-dom';
 import React from 'react';
@@ -17,7 +17,7 @@ ReactDOM.render((
     <ErrorBoundarry>
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" component={Container}/>
+          <Route exact path="/" component={HomePage}/>
         </Switch>
       </BrowserRouter>
     </ErrorBoundarry>
