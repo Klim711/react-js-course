@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
-import ITEMS from '../../items';
+import {getAll} from '../../items';
 
 class HomePage extends Component {
   constructor() {
@@ -41,7 +41,7 @@ class HomePage extends Component {
   }
   getItems() {
     this.setState({
-      items: ITEMS,
+      items: getAll(),
     });
   }
   sortItems() {
