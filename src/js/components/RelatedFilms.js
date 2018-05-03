@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import FilmsContainer from '../FilmsContainer/FilmsContainer';
-import FilmsCriteria from '../FilmsCriteria/FilmsCriteria';
+import FilmsContainer from './FilmsContainer';
+import FilmsCriteria from './FilmsCriteria';
 
 const RelatedFilms = function(props) {
   return (

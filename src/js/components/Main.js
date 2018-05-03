@@ -1,7 +1,6 @@
 import React from 'react';
-import FilmsContainer from '../FilmsContainer/FilmsContainer';
-import FilmsHeader from '../FilmsHeader/FilmsHeader';
-import './Main.scss';
+import FilmsContainer from './FilmsContainer';
+import FilmsHeader from './FilmsHeader';
 
 const Main = function(props) {
   let header;

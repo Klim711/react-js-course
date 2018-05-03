@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import Main from '../Main/Main';
-import Footer from '../Footer/Footer';
-import Header from '../Header/Header';
-import {getAll} from '../../items';
+import Main from './Main';
+import Footer from './Footer';
+import Header from './Header';
+import {getAll} from '../items';
 
 class HomePage extends Component {
   constructor() {

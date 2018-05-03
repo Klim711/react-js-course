@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import Filter from '../Filter/Filter';
-import './Search.scss';
+import Filter from './Filter';
 
 export default class Search extends Component {
   constructor() {

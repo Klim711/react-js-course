@@ -1,10 +1,11 @@
-import HomePage from './components/HomePage/HomePage';
-import '../styles/common.scss';
+
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import HomePage from './components/HomePage';
 import ReactDOM from 'react-dom';
 import React from 'react';
 import ErrorBoundarry from './components/ErrorBoundary';
-import {BrowserRouter, Switch, Route} from 'react-router-dom';
-import FilmPage from './components/FilmPage/FilmPage';
+import FilmPage from './components/FilmPage';
+import '../styles/common.scss';
 
 if (process.env.NODE_ENV === 'development') {
     console.log('Welcome to development');

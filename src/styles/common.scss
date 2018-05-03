@@ -1,5 +1,12 @@
 @import './constants.scss';
 
+@import './components/FilmsHeader.scss';
+@import './components/Footer.scss';
+@import './components/Header.scss';
+@import './components/InfoPanel.scss';
+@import './components/Main.scss';
+@import './components/Search.scss';
+
 html, body {
     height: 100%;
 }

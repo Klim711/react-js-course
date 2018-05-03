@@ -1,8 +1,8 @@
 import React, {PureComponent} from 'react';
-import Footer from '../Footer/Footer';
-import InfoPanel from '../InfoPanel/InfoPanel';
-import RelatedFilms from '../RelatedFilms/RelatedFilms';
-import {getById, getRelated} from '../../items';
+import Footer from './Footer';
+import InfoPanel from './InfoPanel';
+import RelatedFilms from './RelatedFilms';
+import {getById, getRelated} from '../items';
 
 export default class FilmPage extends PureComponent {
   constructor() {

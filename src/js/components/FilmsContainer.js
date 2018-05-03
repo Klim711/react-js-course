@@ -1,6 +1,6 @@
 import React from 'react';
-import EmptyList from '../EmptyList/EmptyList';
-import FilmBlock from '../FilmBlock/FilmBlock';
+import EmptyList from './EmptyList';
+import FilmBlock from './FilmBlock';
 
 const FilmsContainer = function(props) {
     let content;
