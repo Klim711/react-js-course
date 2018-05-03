@@ -22,3 +22,13 @@ button {
     cursor: pointer;
     outline: none;
 }
+
+#container {
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
