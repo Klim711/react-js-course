@@ -9,7 +9,7 @@ const FilmsContainer = function(props) {
       content = <EmptyList content="No Films Found"/>;
     } else {
       content = props.items.map((item) => {
-        return<FilmBlock instance={item}/>
+        return<FilmBlock key={item.id} instance={item}/>
       });
     }
     return <div className="items-container">{content}</div>;
