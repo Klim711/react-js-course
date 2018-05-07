@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import Filter from '../Filter/Filter';
-import './Search.scss';
+import Filter from './Filter';
 
 export default class Search extends Component {
   constructor() {
@@ -22,7 +21,7 @@ export default class Search extends Component {
                     value={this.props.filter}
                     items={this.props.filters}
                     setActive={this.props.setSearchFilter}/>
-            <button onClick={this.search}>Search</button>
+            <button className="btn" onClick={this.search}>Search</button>
           </div>
         </div>
     );

@@ -1,7 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const FilmBlock = function(props) {
   return (
+    <Link to={`/films/${props.instance.id}`}>
     <article>
         <div className="film-image">
           <img src={props.instance.coverUrl}/>
@@ -18,6 +20,7 @@ const FilmBlock = function(props) {
           </div>
         </div>
     </article>
+    </Link>
   )
 }
 

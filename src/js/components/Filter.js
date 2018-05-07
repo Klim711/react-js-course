@@ -14,7 +14,10 @@ export default class Filter extends Component {
       let className = (item === this.props.value) ? 'active' : '';
 
       return (
-        <button className={className} value={item} onClick={this.setActive}>
+        <button className={className}
+                key={item}
+                value={item}
+                onClick={this.setActive}>
           {item}
         </button>
       );

@@ -1,5 +1,12 @@
 @import './constants.scss';
 
+@import './components/FilmsHeader.scss';
+@import './components/Footer.scss';
+@import './components/Header.scss';
+@import './components/InfoPanel.scss';
+@import './components/Main.scss';
+@import './components/Search.scss';
+
 html, body {
     height: 100%;
 }
@@ -21,4 +28,21 @@ body {
 button {
     cursor: pointer;
     outline: none;
+}
+
+.btn {
+    padding: 5px 20px;
+    border: 0;
+    border-radius: 2px;
+    text-transform: uppercase
+}
+
+#container {
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }

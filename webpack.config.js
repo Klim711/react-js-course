@@ -15,12 +15,14 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "js/[name].js"
+    filename: "js/[name].js",
+    publicPath: '/',
   },
   mode: NODE_ENV,
   devtool: NODE_ENV === 'development' ? 'eval' : false,
   devServer: {
-    contentBase: "./dist"
+    contentBase: "./dist",
+    historyApiFallback: true,
   },
   module: {
     rules: [

@@ -1,34 +1,10 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
-import Main from '../Main/Main';
-import Footer from '../Footer/Footer';
-import Header from '../Header/Header';
-import ErrorBoundarry from '../ErrorBoundary';
-import './Container.scss';
+import Main from './Main';
+import Footer from './Footer';
+import Header from './Header';
+import {getAll} from '../items';
 
-const IMAGE_URL = 'https://ia.media-imdb.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_UX182_CR0,0,182,268_AL_.jpg';
-const ITEMS = [{
-    title: ' Seven Psychopaths',
-    genre: 'Comedy',
-    year: '2007',
-    coverUrl: IMAGE_URL,
-    rating: '8',
-  }, {
-    title: 'Dark Knight',
-    genre: 'Comedy',
-    year: '2007',
-    coverUrl: IMAGE_URL,
-    rating: '9',
-  }, {
-    title: 'The Lord of The Rings',
-    genre: 'Fantasy',
-    year: '2001',
-    coverUrl: IMAGE_URL,
-    rating: '9',
-  }
-];
-
-class Container extends Component {
+class HomePage extends Component {
   constructor() {
     super();
 
@@ -65,7 +41,7 @@ class Container extends Component {
   }
   getItems() {
     this.setState({
-      items: ITEMS,
+      items: getAll(),
     });
   }
   sortItems() {
@@ -73,7 +49,6 @@ class Container extends Component {
   }
   render() {
     return (
-      <ErrorBoundarry>
       <div className="container">
         <Header filter={this.state.filter}
                 filters={this.state.filters}
@@ -85,10 +60,7 @@ class Container extends Component {
               setSorting={this.setSorting}/>
         <Footer content="FOOTER"/>
       </div>
-      </ErrorBoundarry>
     );
   }
 }
-export default Container;
-
-ReactDOM.render(<Container/>, document.getElementById("container"));
+export default HomePage;
