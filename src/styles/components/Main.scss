@@ -3,8 +3,20 @@ main.films {
 }
 
 .items-container {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 200px);
+    grid-gap: 20px;
     justify-content: space-between;
     padding: 20px 0;
 }
+
+.film-block {
+    width: 200px;
+  
+    .film-image {
+      img {
+        width: 200px;
+        height: 300px;
+      }
+    }
+  }
