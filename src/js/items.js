@@ -32,6 +32,18 @@ const ITEMS = [{
   }
 ];
 
+const FILMS_SOURCE = 'http://react-cdp-api.herokuapp.com';
+
+async function getMovies(value, filter = 'title') {
+  const source = `${FILMS_SOURCE}/movies/` +
+    (value ? `?search=${value}&searchBy=${filter}` : '');
+  const response = await fetch(source);
+
+  const {data} = await response.json();
+
+  return data;
+}
+
 function getAll() {
   return ITEMS;
 }

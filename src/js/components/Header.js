@@ -7,10 +7,7 @@ export default class Header extends Component {
       <header className="row page-header">
         <h1 className="title">netflixroulette</h1>
 
-        <Search filter={this.props.filter}
-                filters={this.props.filters}
-                setSearchFilter={this.props.setSearchFilter}
-                setSearchValue={this.props.setSearchValue}/>
+        <Search/>
       </header>
     );
   }
