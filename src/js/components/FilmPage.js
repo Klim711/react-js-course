@@ -4,25 +4,43 @@ import {connect} from 'react-redux';
 import Footer from './Footer';
 import InfoPanel from './InfoPanel';
 import RelatedFilms from './RelatedFilms';
+import {getMovie, getRelated} from '../items';
+import { isAbsolute } from 'path';
+import { isArray } from 'util';
 
 class FilmPage extends PureComponent {
-  static getDerivedStateFromProps (props) {
+  static async getDerivedStateFromProps (props) {
     let id = props.match.params.id;
-    props.getMovie(id);
-    props.getRelatedMovies();
+    const currentMovie = props.movie;
+
+    if (!currentMovie || (String(currentMovie.id) !== id)) {
+      const movie = await props.getMovie(id);
+
+      const criteria = props.relatedMovies.criteria;
+      props.getRelatedMovies(criteria, movie);
+    }
 
     return null;
   }
   render() {
     const relatedMovies = this.props.relatedMovies;
     const film = this.props.movie;
+    const criteria = this.props.criteria;
 
     let infoPanel = film ? <InfoPanel film={film}/> : null;
-    let relatedFilms = (relatedMovies && film) ? (
-      <RelatedFilms criteria={relatedMovies.criteria}
-                    criteriaValue={film[relatedMovies.criteria]}
-                    items={relatedMovies.items}/>
-    ) : null;
+
+    let relatedFilms;
+    if (film) {
+      let criteriaValue = film[criteria];
+      if (isArray(criteriaValue)) {
+        criteriaValue = criteriaValue[0];
+      }
+      relatedFilms = 
+        <RelatedFilms criteria={criteria}
+                      criteriaValue={criteriaValue}
+                      items={relatedMovies}/>;
+    }
+
 
     return (
       <div className="container">
@@ -37,21 +55,28 @@ class FilmPage extends PureComponent {
 function mapStateToProps ({movie}){
   return {
     movie: movie.item,
-    relatedMovies: movie.relatedMovies,
+    relatedMovies: movie.relatedMovies.items,
+    criteria: movie.relatedMovies.criteria,
   };
 }
 
 function mapDispatchToProps (dispatch){
   return {
-    getMovie: (id) => {
+    getMovie: async (id) => {
+      const data = await getMovie(id);
+      
       dispatch({
-        type: 'GET_MOVIE',
-        id: id,
+        type: 'SET_MOVIE',
+        item: data,
       });
+      return data;
     },
-    getRelatedMovies: (id) => {
+    getRelatedMovies: async (criteria, relatesTo) => {
+      const data = await getRelated(criteria, relatesTo);
+
       dispatch({
-        type: 'GET_RELATED_MOVIES',
+        type: 'SET_RELATED_MOVIES',
+        items: data,
       });
     },
   };

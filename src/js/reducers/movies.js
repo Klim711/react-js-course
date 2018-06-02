@@ -39,15 +39,13 @@ function movie (state = {}, action) {
   const newState = {...state};
 
   switch (action.type) {
-    case 'GET_MOVIE':
-      newState.item = getById(action.id);
+    case 'SET_MOVIE':
+      newState.item = action.item;
 
       return newState;
-    case 'GET_RELATED_MOVIES':
-      const relatedMovies =
-        getRelated(newState.relatedMovies.criteria, newState.item);
+    case 'SET_RELATED_MOVIES':
+      newState.relatedMovies.items = action.items;
       
-        newState.relatedMovies.items = relatedMovies;
       return newState;
     default:
       return newState;

@@ -1,3 +1,5 @@
+import { isArray } from "util";
+
 const IMAGE_URL = 'https://ia.media-imdb.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_UX182_CR0,0,182,268_AL_.jpg';
 const ITEMS = [{
     id: '0',
@@ -44,6 +46,13 @@ async function getMovies(value, filter = 'title') {
   return data;
 }
 
+async function getMovie(id) {
+  const source = `${FILMS_SOURCE}/movies/${id}`;
+  const response = await fetch(source);
+  
+  return response.json();
+}
+
 function getAll() {
   return ITEMS;
 }
@@ -52,19 +61,28 @@ function getById(id) {
   return ITEMS.find((item) => item.id === id);
 }
 
-function getRelated(criteria, relatesTo) {
-  return ITEMS.filter((item) => {
-    if (item.id === relatesTo.id) {
-      return false;
-    }
-    return item[criteria] === relatesTo[criteria];
-  });
+async function getRelated(criteria, relatesTo) {
+  const filterValue = relatesTo[criteria];
+  const search = isArray(filterValue) ? filterValue[0] : filterValue;
+  const source =
+    `${FILMS_SOURCE}/movies/?search=${search}&searchBy=${criteria}`;
+  
+  const response = await fetch(source);
+
+  const {data} = await response.json();
+
+  if (!data) {
+    return [];
+  }
+
+  return data.filter((item) => item.id !== relatesTo.id);
 }
 
 export {
   getAll,
   getById,
   getRelated,
+  getMovie,
 };
 
 

@@ -35,7 +35,7 @@ const initialState = {
   movie: {
     item: null,
     relatedMovies: {
-      criteria: 'genre',
+      criteria: 'genres',
       items: [],
     },
   },
