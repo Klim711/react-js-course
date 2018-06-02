@@ -1,43 +1,59 @@
 import React, {PureComponent} from 'react';
+import {connect} from 'react-redux';
+
 import Footer from './Footer';
 import InfoPanel from './InfoPanel';
 import RelatedFilms from './RelatedFilms';
-import {getById, getRelated} from '../items';
 
-export default class FilmPage extends PureComponent {
-  constructor() {
-    super();
-
-    this.state = {
-      film: null,
-      criteria: null,
-      relatedFilms: null,
-      criteriaValue: null,
-    };
-  }
+class FilmPage extends PureComponent {
   static getDerivedStateFromProps (props) {
     let id = props.match.params.id;
-    let film = getById(id);
-    let criteria = 'genre';
-    let criteriaValue = film[criteria];
-    let relatedFilms = getRelated(criteria, film);
+    props.getMovie(id);
+    props.getRelatedMovies();
 
-    return {
-      film,
-      criteria,
-      relatedFilms,
-      criteriaValue,
-    };
+    return null;
   }
   render() {
+    const relatedMovies = this.props.relatedMovies;
+    const film = this.props.movie;
+
+    let infoPanel = film ? <InfoPanel film={film}/> : null;
+    let relatedFilms = (relatedMovies && film) ? (
+      <RelatedFilms criteria={relatedMovies.criteria}
+                    criteriaValue={film[relatedMovies.criteria]}
+                    items={relatedMovies.items}/>
+    ) : null;
+
     return (
       <div className="container">
-        <InfoPanel film={this.state.film}/>
-        <RelatedFilms criteria={this.state.criteria}
-                      criteriaValue={this.state.criteriaValue}
-                      items={this.state.relatedFilms}/>
+        {infoPanel}
+        {relatedFilms}
         <Footer content="FOOTER"/>
       </div>
     );
   }
 }
+
+function mapStateToProps ({movie}){
+  return {
+    movie: movie.item,
+    relatedMovies: movie.relatedMovies,
+  };
+}
+
+function mapDispatchToProps (dispatch){
+  return {
+    getMovie: (id) => {
+      dispatch({
+        type: 'GET_MOVIE',
+        id: id,
+      });
+    },
+    getRelatedMovies: (id) => {
+      dispatch({
+        type: 'GET_RELATED_MOVIES',
+      });
+    },
+  };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(FilmPage);

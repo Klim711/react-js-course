@@ -1,4 +1,4 @@
-import {getAll} from '../items';
+import {getAll, getById, getRelated} from '../items';
 
 export default function movies(state = {}, action) {
   const newState = {...state};
@@ -31,6 +31,30 @@ export default function movies(state = {}, action) {
 
       return newState;
     default:
-      return state;
+      return newState;
   }
+};
+
+function movie (state = {}, action) {
+  const newState = {...state};
+
+  switch (action.type) {
+    case 'GET_MOVIE':
+      newState.item = getById(action.id);
+
+      return newState;
+    case 'GET_RELATED_MOVIES':
+      const relatedMovies =
+        getRelated(newState.relatedMovies.criteria, newState.item);
+      
+        newState.relatedMovies.items = relatedMovies;
+      return newState;
+    default:
+      return newState;
+  }
+}
+
+export {
+  movie,
+  movies,
 };

@@ -32,6 +32,13 @@ const initialState = {
       active: 'release date',
     },
   },
+  movie: {
+    item: null,
+    relatedMovies: {
+      criteria: 'genre',
+      items: [],
+    },
+  },
 };
 
 const store = createStore(reducers, initialState);
