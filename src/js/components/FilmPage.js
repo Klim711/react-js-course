@@ -5,19 +5,15 @@ import Footer from './Footer';
 import InfoPanel from './InfoPanel';
 import RelatedFilms from './RelatedFilms';
 import {getMovie, getRelated} from '../items';
-import { isAbsolute } from 'path';
 import { isArray } from 'util';
 
 class FilmPage extends PureComponent {
-  static async getDerivedStateFromProps (props) {
+  static getDerivedStateFromProps (props) {
     let id = props.match.params.id;
     const currentMovie = props.movie;
 
     if (!currentMovie || (String(currentMovie.id) !== id)) {
-      const movie = await props.getMovie(id);
-
-      const criteria = props.relatedMovies.criteria;
-      props.getRelatedMovies(criteria, movie);
+      props.getMovie(id);
     }
 
     return null;
@@ -46,7 +42,7 @@ class FilmPage extends PureComponent {
       <div className="container">
         {infoPanel}
         {relatedFilms}
-        <Footer content="FOOTER"/>
+        <Footer/>
       </div>
     );
   }
@@ -62,23 +58,20 @@ function mapStateToProps ({movie}){
 
 function mapDispatchToProps (dispatch){
   return {
-    getMovie: async (id) => {
-      const data = await getMovie(id);
-      
+    getMovie: (id) => {
       dispatch({
-        type: 'SET_MOVIE',
-        item: data,
+        type: 'MOVIE_FETCH',
+        id: id,
       });
-      return data;
     },
-    getRelatedMovies: async (criteria, relatesTo) => {
-      const data = await getRelated(criteria, relatesTo);
+    // getRelatedMovies: async (criteria, relatesTo) => {
+    //   const data = await getRelated(criteria, relatesTo);
 
-      dispatch({
-        type: 'SET_RELATED_MOVIES',
-        items: data,
-      });
-    },
+    //   dispatch({
+    //     type: 'SET_RELATED_MOVIES',
+    //     items: data,
+    //   });
+    // },
   };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(FilmPage);
