@@ -7,12 +7,7 @@ export default function movies(state = {}, action) {
     case 'SET_SEARCH_VALUE':
       return {
         ...state,
-        searchValue: action.value,
-      }
-    case 'GET_SEARCH_ITEMS':
-      return {
-        ...state,
-        items: getAll(state.searchValue),
+        searchValue: action.searchValue,
       }
     case 'SET_SORT_BY':
       const newActiveSort = action.active;
@@ -28,6 +23,10 @@ export default function movies(state = {}, action) {
       if (newState.searchBy.values.includes(newActiveSearchBy)) {
         newState.searchBy.active = newActiveSearchBy;
       }
+
+      return newState;
+    case 'MOVIES_FETCH_SUCCEEDED':
+      newState.items = action.items;
 
       return newState;
     default:

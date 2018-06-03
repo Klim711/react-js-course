@@ -32,6 +32,9 @@ function mapDispatchToProps (dispatch){
         type: 'SET_SORT_BY',
         active: value,
       });
+      dispatch({
+        type: 'MOVIES_FETCH',
+      });
     },
   };
 };

@@ -11,7 +11,6 @@ class Search extends Component {
   }
   search(event) {
     this.props.setSearchValue(this.input.value);
-    this.props.getSearchItems();
   }
   render () {
     return (
@@ -47,16 +46,17 @@ function mapDispatchToProps (dispatch, ownProps){
         type: 'SET_SEARCH_VALUE',
         searchValue: value,
       });
-    },
-    getSearchItems: () => {
       dispatch({
-        type: 'GET_SEARCH_ITEMS',
+        type: 'MOVIES_FETCH',
       });
     },
     setSearchFilter: (value) => {
       dispatch({
         type: 'SET_SEARCH_BY',
         active: value,
+      });
+      dispatch({
+        type: 'MOVIES_FETCH',
       });
     },
   };
