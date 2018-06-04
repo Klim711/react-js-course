@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+
+import {setSortBy} from '../actions/actions';
 import Filter from './Filter';
 
 class FilmsHeader extends Component {
@@ -28,10 +30,7 @@ function mapStateToProps (state){
 function mapDispatchToProps (dispatch){
   return {
     setSorting: (value) => {
-      dispatch({
-        type: 'SET_SORT_BY',
-        active: value,
-      });
+      dispatch(setSortBy(value));
       dispatch({
         type: 'MOVIES_FETCH',
       });

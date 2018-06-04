@@ -24,7 +24,10 @@ export default function movies(state = initialState, action) {
       const newActiveSort = action.active;
 
       if (newState.sortBy.values.includes(newActiveSort)) {
-        newState.sortBy.active = newActiveSort;
+        newState.sortBy = {
+          ...state.sortBy,
+          active: newActiveSort,
+        };
       }
 
       return newState;
@@ -44,3 +47,8 @@ export default function movies(state = initialState, action) {
       return newState;
   }
 };
+
+export {
+  initialState,
+  movies,
+}

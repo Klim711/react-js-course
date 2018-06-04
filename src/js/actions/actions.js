@@ -5,6 +5,14 @@ function setSearchValue(newValue) {
   };
 };
 
+function setSortBy(newValue) {
+  return {
+    type: 'SET_SORT_BY',
+    active: newValue,
+  };
+};
+
 export {
   setSearchValue,
+  setSortBy
 };
