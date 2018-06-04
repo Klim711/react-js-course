@@ -1,6 +1,17 @@
-import {getAll, getById, getRelated} from '../items';
+const initialState = {
+  searchBy: {
+    values: ['title', 'genres'],
+    active: 'title',
+  },
+  searchValue: '',
+  items: [],
+  sortBy: {
+    values: ['release_date', 'vote_average'],
+    active: 'release_date',
+  },
+};
 
-export default function movies(state = {}, action) {
+export default function movies(state = initialState, action) {
   const newState = {...state};
 
   switch (action.type) {
@@ -32,26 +43,4 @@ export default function movies(state = {}, action) {
     default:
       return newState;
   }
-};
-
-function movie (state = {}, action) {
-  const newState = {...state};
-
-  switch (action.type) {
-    case 'SET_MOVIE':
-      newState.item = action.item;
-
-      return newState;
-    case 'SET_RELATED_MOVIES':
-      newState.relatedMovies.items = action.items;
-      
-      return newState;
-    default:
-      return newState;
-  }
-}
-
-export {
-  movie,
-  movies,
 };
