@@ -11,7 +11,7 @@ const extractSass = new ExtractTextPlugin({
 
 module.exports = {
   entry: {
-    main: "./src/js/app.js"
+    main: ["babel-polyfill", "./src/js/app.js"]
   },
   output: {
     path: path.resolve(__dirname, "dist"),

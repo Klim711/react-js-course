@@ -1,4 +1,6 @@
 import React from 'react';
+import {connect} from 'react-redux';
+
 import FilmsContainer from './FilmsContainer';
 import FilmsHeader from './FilmsHeader';
 
@@ -10,10 +12,7 @@ const Main = function(props) {
   } else {
     header = 
       <div className="row">
-        <FilmsHeader sortBy={props.sortBy}
-                    sortings={props.sortings}
-                    count={props.items.length}
-                    setSorting={props.setSorting}/>
+        <FilmsHeader count={props.items.length}/>
       </div>;
   }
 
@@ -27,4 +26,9 @@ const Main = function(props) {
   );
 };
 
-export default Main;
+function mapStateToProps (state){
+  return {
+    items: state.movies.items,
+  };
+};
+export default connect(mapStateToProps)(Main);

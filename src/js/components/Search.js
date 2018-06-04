@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+
 import Filter from './Filter';
 
-export default class Search extends Component {
+class Search extends Component {
   constructor() {
     super();
 
@@ -18,8 +20,8 @@ export default class Search extends Component {
           <input type="text" ref={(input) => this.input = input}></input>
           <div className="search-buttons">
             <Filter content="Search By"
-                    value={this.props.filter}
-                    items={this.props.filters}
+                    value={this.props.active}
+                    items={this.props.values}
                     setActive={this.props.setSearchFilter}/>
             <button className="btn" onClick={this.search}>Search</button>
           </div>
@@ -27,3 +29,36 @@ export default class Search extends Component {
     );
   }
 }
+
+function mapStateToProps ({movies}){
+  const {searchBy} = movies;
+
+  return {
+    active: searchBy.active,
+    values: searchBy.values,
+  };
+}
+
+function mapDispatchToProps (dispatch, ownProps){
+  return {
+    setSearchValue: (value) => {
+      dispatch({
+        type: 'SET_SEARCH_VALUE',
+        searchValue: value,
+      });
+      dispatch({
+        type: 'MOVIES_FETCH',
+      });
+    },
+    setSearchFilter: (value) => {
+      dispatch({
+        type: 'SET_SEARCH_BY',
+        active: value,
+      });
+      dispatch({
+        type: 'MOVIES_FETCH',
+      });
+    },
+  };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Search);

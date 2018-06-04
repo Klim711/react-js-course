@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 
-const InfoPanel = function(props) {
+const InfoPanel = function({film}) {
   return (
     <header className="row page-header">
       <div className="title-block">
@@ -16,19 +16,19 @@ const InfoPanel = function(props) {
 
       <div className="info-panel">
         <div className="info-panel__cover">
-          <img src={props.film.coverUrl}/>
+          <img src={film.poster_path}/>
         </div>
 
         <div className="info-panel__text">
-          <h2>{props.film.title} <span>{props.film.rating}</span></h2>
+          <h2>{film.title} <span>{film.vote_average}</span></h2>
 
           <div className="additional-info">
-            <span className="year">{props.film.year}</span>
-            <span className="time">{props.film.time} min</span>
+            <span className="year">{film.release_date}</span>
+            <span className="time">{film.runtime} min</span>
           </div>
 
           <div className="description">
-            {props.film.description}
+            {film.overview}
           </div>
         </div>
       </div>

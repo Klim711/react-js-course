@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 const FilmBlock = function(props) {
   return (
     <Link to={`/films/${props.instance.id}`}>
-    <article>
+    <article className="film-block">
         <div className="film-image">
-          <img src={props.instance.coverUrl}/>
+          <img src={props.instance.poster_path}/>
         </div>
         <div className="film-text">
           <div className="film-title">
