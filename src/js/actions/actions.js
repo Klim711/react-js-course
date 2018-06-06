@@ -12,7 +12,23 @@ function setSortBy(newValue) {
   };
 };
 
+function setSearchBy(newValue) {
+  return {
+    type: 'SET_SEARCH_BY',
+    active: newValue,
+  };
+};
+
+function setMovies(newValue) {
+  return {
+    type: 'SET_MOVIES',
+    items: newValue,
+  };
+}
+
 export {
   setSearchValue,
-  setSortBy
+  setSortBy,
+  setSearchBy,
+  setMovies,
 };

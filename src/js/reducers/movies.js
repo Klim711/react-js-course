@@ -39,7 +39,7 @@ export default function movies(state = initialState, action) {
       }
 
       return newState;
-    case 'MOVIES_FETCH_SUCCEEDED':
+    case 'SET_MOVIES':
       newState.items = action.items;
 
       return newState;

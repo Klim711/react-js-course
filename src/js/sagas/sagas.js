@@ -1,10 +1,12 @@
 import { call, apply, put, takeEvery, takeLatest, select } from 'redux-saga/effects'
+
 import * as Api from '../items';
+import { setMovies } from '../actions/actions';
 
 function* fetchMovies(action) {
   const searchInfo = yield select((state) => state.movies);
   const movies = yield call(Api.getMovies, searchInfo);
-  yield put({type: 'MOVIES_FETCH_SUCCEEDED', items: movies});
+  yield put(setMovies(movies));
 }
 
 function* fetchMovie({id}) {
