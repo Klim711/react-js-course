@@ -6,6 +6,7 @@ import InfoPanel from './InfoPanel';
 import RelatedFilms from './RelatedFilms';
 import {getMovie, getRelated} from '../items';
 import { isArray } from 'util';
+import { fetchMovie } from '../actions/movie';
 
 class FilmPage extends PureComponent {
   static getDerivedStateFromProps (props) {
@@ -59,19 +60,8 @@ function mapStateToProps ({movie}){
 function mapDispatchToProps (dispatch){
   return {
     getMovie: (id) => {
-      dispatch({
-        type: 'MOVIE_FETCH',
-        id: id,
-      });
+      dispatch(fetchMovie(id));
     },
-    // getRelatedMovies: async (criteria, relatesTo) => {
-    //   const data = await getRelated(criteria, relatesTo);
-
-    //   dispatch({
-    //     type: 'SET_RELATED_MOVIES',
-    //     items: data,
-    //   });
-    // },
   };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(FilmPage);

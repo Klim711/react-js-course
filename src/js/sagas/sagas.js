@@ -2,6 +2,7 @@ import { call, apply, put, takeEvery, takeLatest, select } from 'redux-saga/effe
 
 import * as Api from '../items';
 import { setMovies } from '../actions/movies';
+import { setMovie, setRelatedMovies } from '../actions/movie';
 
 function* fetchMovies(action) {
   const searchInfo = yield select((state) => state.movies);
@@ -11,14 +12,14 @@ function* fetchMovies(action) {
 
 function* fetchMovie({id}) {
   const movie = yield call(Api.getMovie, id);
-  yield put({type: 'SET_MOVIE', item: movie});
+  yield put(setMovie(movie));
   yield put({type: 'RELATED_MOVIES_FETCH', relatesTo: movie});
 }
 
 function* fetchRelatedMovies({relatesTo}) {
   const {criteria} = yield select((state) => state.movie.relatedMovies);
   const movies = yield call(Api.getRelated, criteria, relatesTo);
-  yield put({type: 'SET_RELATED_MOVIES', items: movies});
+  yield put(setRelatedMovies(movies));
 }
 
 function* saga() {
