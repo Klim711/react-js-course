@@ -26,9 +26,16 @@ function setMovies(newValue) {
   };
 }
 
+function fetchMovies() {
+  return {
+    type: 'MOVIES_FETCH',
+  };
+}
+
 export {
   setSearchValue,
   setSortBy,
   setSearchBy,
   setMovies,
+  fetchMovies,
 };

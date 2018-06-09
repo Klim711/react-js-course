@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
-import {setSortBy} from '../actions/movies';
+import {setSortBy, fetchMovies} from '../actions/movies';
 import Filter from './Filter';
 
 class FilmsHeader extends Component {
@@ -31,9 +31,8 @@ function mapDispatchToProps (dispatch){
   return {
     setSorting: (value) => {
       dispatch(setSortBy(value));
-      dispatch({
-        type: 'MOVIES_FETCH',
-      });
+
+      dispatch(fetchMovies());
     },
   };
 };

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
 import Filter from './Filter';
-import {setSearchValue, setSearchBy} from '../actions/movies';
+import {setSearchValue, setSearchBy, fetchMovies} from '../actions/movies';
 
 class Search extends Component {
   constructor() {
@@ -45,16 +45,12 @@ function mapDispatchToProps (dispatch, ownProps){
     setSearchValue: (value) => {
       dispatch(setSearchValue(value));
       
-      dispatch({
-        type: 'MOVIES_FETCH',
-      });
+      dispatch(fetchMovies());
     },
     setSearchFilter: (value) => {
       dispatch(setSearchBy(value));
 
-      dispatch({
-        type: 'MOVIES_FETCH',
-      });
+      dispatch(fetchMovies());
     },
   };
 }
