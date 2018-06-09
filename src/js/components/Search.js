@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
 import Filter from './Filter';
-import {setSearchValue, setSearchBy} from '../actions/actions';
+import {setSearchValue, setSearchBy} from '../actions/movies';
 
 class Search extends Component {
   constructor() {

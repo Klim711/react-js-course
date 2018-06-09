@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
-import {setSortBy} from '../actions/actions';
+import {setSortBy} from '../actions/movies';
 import Filter from './Filter';
 
 class FilmsHeader extends Component {

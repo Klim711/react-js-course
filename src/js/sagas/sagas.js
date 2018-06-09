@@ -1,7 +1,7 @@
 import { call, apply, put, takeEvery, takeLatest, select } from 'redux-saga/effects'
 
 import * as Api from '../items';
-import { setMovies } from '../actions/actions';
+import { setMovies } from '../actions/movies';
 
 function* fetchMovies(action) {
   const searchInfo = yield select((state) => state.movies);

@@ -4,7 +4,7 @@ import {
   setSortBy,
   setSearchBy,
   setMovies,
-} from '../../actions/actions';
+} from '../../actions/movies';
 
 describe('movies reducer', function () {
   describe('SET_SEARCH_VALUE action', function () {
