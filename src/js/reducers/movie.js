@@ -15,10 +15,18 @@ export default function movie (state = initialState, action) {
 
       return newState;
     case 'SET_RELATED_MOVIES':
-      newState.relatedMovies.items = action.items;
+      newState.relatedMovies = {
+        ...newState.relatedMovies,
+        items: action.items,
+      };
       
       return newState;
     default:
       return newState;
   }
+}
+
+export {
+  initialState,
+  movie,
 }
