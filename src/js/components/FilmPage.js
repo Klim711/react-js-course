@@ -1,12 +1,14 @@
 import React, {PureComponent} from 'react';
 import {connect} from 'react-redux';
 
+import {isArray} from 'util';
+
+import {getMovie, getRelated} from '../items';
+import {fetchMovie} from '../actions/movie';
+
 import Footer from './Footer';
 import InfoPanel from './InfoPanel';
 import RelatedFilms from './RelatedFilms';
-import {getMovie, getRelated} from '../items';
-import { isArray } from 'util';
-import { fetchMovie } from '../actions/movie';
 
 class FilmPage extends PureComponent {
   static getDerivedStateFromProps (props) {
@@ -37,7 +39,6 @@ class FilmPage extends PureComponent {
                       criteriaValue={criteriaValue}
                       items={relatedMovies}/>;
     }
-
 
     return (
       <div className="container">
