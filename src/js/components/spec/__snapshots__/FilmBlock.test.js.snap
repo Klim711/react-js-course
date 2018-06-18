@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilmBlock component matches to snapshot 1`] = `
+<a
+  href="/films/711"
+  onClick={[Function]}
+>
+  <article
+    className="film-block"
+  >
+    <div
+      className="film-image"
+    >
+      <img
+        src="path"
+      />
+    </div>
+    <div
+      className="film-text"
+    >
+      <div
+        className="film-title"
+      >
+        someTitle
+      </div>
+      <div
+        className="film-genre"
+      >
+        someGenre
+      </div>
+      <div
+        className="film-year"
+      >
+        someYear
+      </div>
+    </div>
+  </article>
+</a>
+`;

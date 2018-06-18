@@ -1,11 +1,14 @@
 import React, {PureComponent} from 'react';
 import {connect} from 'react-redux';
 
+import {isArray} from 'util';
+
+import {getMovie, getRelated} from '../items';
+import {fetchMovie} from '../actions/movie';
+
 import Footer from './Footer';
 import InfoPanel from './InfoPanel';
 import RelatedFilms from './RelatedFilms';
-import {getMovie, getRelated} from '../items';
-import { isArray } from 'util';
 
 class FilmPage extends PureComponent {
   static getDerivedStateFromProps (props) {
@@ -37,7 +40,6 @@ class FilmPage extends PureComponent {
                       items={relatedMovies}/>;
     }
 
-
     return (
       <div className="container">
         {infoPanel}
@@ -59,19 +61,8 @@ function mapStateToProps ({movie}){
 function mapDispatchToProps (dispatch){
   return {
     getMovie: (id) => {
-      dispatch({
-        type: 'MOVIE_FETCH',
-        id: id,
-      });
+      dispatch(fetchMovie(id));
     },
-    // getRelatedMovies: async (criteria, relatesTo) => {
-    //   const data = await getRelated(criteria, relatesTo);
-
-    //   dispatch({
-    //     type: 'SET_RELATED_MOVIES',
-    //     items: data,
-    //   });
-    // },
   };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(FilmPage);
