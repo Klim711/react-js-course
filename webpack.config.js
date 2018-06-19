@@ -11,7 +11,7 @@ const extractSass = new ExtractTextPlugin({
 
 module.exports = {
   entry: {
-    main: ["babel-polyfill", "./src/js/app.js"]
+    main: ["babel-polyfill", "./src/client/js/app.js"]
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -58,7 +58,7 @@ module.exports = {
   plugins: [
     extractSass,
     new HtmlWebPackPlugin({
-      template: "./src/index.html",
+      template: "./src/client/index.html",
       filename: "./index.html"
     }),
     new webpack.EnvironmentPlugin({
