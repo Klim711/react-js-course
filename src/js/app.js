@@ -8,6 +8,7 @@ import '../styles/common.scss';
 
 import HomePage from './components/HomePage';
 import FilmPage from './components/FilmPage';
+import NotFoundPage from './components/NotFoundPage';
 import ErrorBoundarry from './components/ErrorBoundary';
 import {store, persistor} from './configureStore';
 
@@ -27,6 +28,7 @@ ReactDOM.render((
           <Switch>
             <Route exact path="/" component={HomePage}/>
             <Route path="/films/:id" component={FilmPage}/>
+            <Route component={NotFoundPage}/>
           </Switch>
         </BrowserRouter>
       </ErrorBoundarry>
