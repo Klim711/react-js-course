@@ -26,17 +26,4 @@ describe('FilmPage component', function () {
 
     expect(wrapper.length).toEqual(1);
   });
-
-  // it('renders only footer if no movie in store', () => {
-  //   store = mockStore({
-  //     movie: {
-  //       ...initialState,
-  //     },
-  //   });
-
-  //   wrapper = shallow(<FilmPage store={store}/>);
-
-  //   const container = wrapper.find('Footer');
-  //   expect(container.length).toEqual(1);
-  // });
 });
