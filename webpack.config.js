@@ -1,5 +1,4 @@
 const path = require("path");
-const HtmlWebPackPlugin = require("html-webpack-plugin");
 const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
@@ -11,7 +10,10 @@ const extractSass = new ExtractTextPlugin({
 
 module.exports = {
   entry: {
-    main: ["babel-polyfill", "./src/client/js/app.js"]
+    main: [
+      "babel-polyfill",
+      "./src/client/js/app.js"
+    ],
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -20,10 +22,6 @@ module.exports = {
   },
   mode: NODE_ENV,
   devtool: NODE_ENV === 'development' ? 'eval' : false,
-  devServer: {
-    contentBase: "./dist",
-    historyApiFallback: true,
-  },
   module: {
     rules: [
       {
@@ -32,14 +30,6 @@ module.exports = {
         use: {
           loader: "babel-loader"
         }
-      },
-      {
-        test: /\.html$/,
-        use: [
-          {
-            loader: "html-loader"
-          }
-        ]
       },
       {
         test: /\.scss$/,
@@ -57,10 +47,6 @@ module.exports = {
   },
   plugins: [
     extractSass,
-    new HtmlWebPackPlugin({
-      template: "./src/client/index.html",
-      filename: "./index.html"
-    }),
     new webpack.EnvironmentPlugin({
       NODE_ENV: NODE_ENV
     })

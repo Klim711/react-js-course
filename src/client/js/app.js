@@ -1,37 +1,17 @@
-import {PersistGate} from 'redux-persist/integration/react';
-import {BrowserRouter, Switch, Route} from 'react-router-dom';
-import React from 'react';
 import ReactDOM from 'react-dom';
+import React from 'react';
+import {BrowserRouter} from 'react-router-dom';
 import {Provider} from 'react-redux';
 
 import '../styles/common.scss';
 
-import HomePage from './components/HomePage';
-import FilmPage from './components/FilmPage';
-import NotFoundPage from './components/NotFoundPage';
-import ErrorBoundarry from './components/ErrorBoundary';
-import {store, persistor} from './configureStore';
+import {store} from './configureStore';
+import App from './components/App';
 
-if (process.env.NODE_ENV === 'development') {
-  console.log('Welcome to development');
-}
-
-if (process.env.NODE_ENV === 'production') {
-  console.log('Welcome to production');
-}
-
-ReactDOM.render((
+ReactDOM.hydrate((
   <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
-      <ErrorBoundarry>
-        <BrowserRouter>
-          <Switch>
-            <Route exact path="/" component={HomePage}/>
-            <Route path="/films/:id" component={FilmPage}/>
-            <Route component={NotFoundPage}/>
-          </Switch>
-        </BrowserRouter>
-      </ErrorBoundarry>
-    </PersistGate>
+    <BrowserRouter>
+      <App/>
+    </BrowserRouter>
   </Provider>
 ), document.getElementById("container"));
