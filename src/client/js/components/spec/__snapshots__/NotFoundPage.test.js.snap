@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotFoundPage component matches to snapshot 1`] = `
+<div
+  className="container"
+>
+  <main
+    className="row"
+  >
+    <h1>
+      Page not found
+    </h1>
+    <a
+      href="/"
+      onClick={[Function]}
+    >
+      Go to main page
+    </a>
+  </main>
+  <footer
+    className="row page-footer"
+  >
+    <div
+      className="title"
+    >
+      netflixroulette
+    </div>
+  </footer>
+</div>
+`;

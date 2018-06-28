@@ -58,7 +58,7 @@
     "build:prod": "cross-env NODE_ENV=production webpack",
     "build:dev": "cross-env NODE_ENV=development webpack",
     "test": "jest",
-    "lint": "eslint ./ --ignore-pattern .gitignore"
+    "lint": "eslint ./ --ignore-pattern .gitignore --fix"
   },
   "repository": {
     "type": "git",

@@ -2,15 +2,15 @@ import React from 'react';
 import { configure, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-import HomePage from '../HomePage';
+import RelatedFilms from '../RelatedFilms';
 
 configure({ adapter: new Adapter() });
 
-describe('HomePage component', () => {
+describe('RelatedFilms component', () => {
   let wrapper;
 
   it('renders the DUMB component', () => {
-    wrapper = shallow(<HomePage/>);
+    wrapper = shallow(<RelatedFilms/>);
 
     expect(wrapper.length).toEqual(1);
   });

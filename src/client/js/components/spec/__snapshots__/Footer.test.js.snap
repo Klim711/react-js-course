@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer component matches to snapshot 1`] = `
+<footer
+  className="row page-footer"
+>
+  <div
+    className="title"
+  >
+    netflixroulette
+  </div>
+</footer>
+`;

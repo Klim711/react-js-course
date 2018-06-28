@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilmsCriteria component matches to snapshot 1`] = `
+<div
+  className="films-header"
+>
+  Films by 
+  mockValue
+   
+  mockCriteria
+</div>
+`;

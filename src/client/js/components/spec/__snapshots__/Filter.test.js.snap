@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Filter component matches to snapshot 1`] = `
+<div
+  className="search__filter"
+>
+  <span
+    className="search__filter__title"
+  />
+  <button
+    className=""
+    onClick={[Function]}
+    value="mockValue1"
+  >
+    mockValue1
+  </button>
+  <button
+    className="active"
+    onClick={[Function]}
+    value="activeValue"
+  >
+    activeValue
+  </button>
+  <button
+    className=""
+    onClick={[Function]}
+    value="mockValue2"
+  >
+    mockValue2
+  </button>
+</div>
+`;
