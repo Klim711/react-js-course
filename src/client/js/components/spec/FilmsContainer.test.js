@@ -19,7 +19,6 @@ describe('FilmsContainer component', function () {
     const items = [{id: 1}, {id: 2}, {id: 3}];
     
     wrapper = shallow(<FilmsContainer items={items}/>);
-    console.log(wrapper.text());
     const blocks = wrapper.find('FilmBlock');
 
     expect(items.length).toBe(blocks.length);

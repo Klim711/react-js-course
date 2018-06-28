@@ -2,9 +2,8 @@ import React from 'react';
 import {configure, shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import configureStore from 'redux-mock-store';
-import {createStore} from 'redux';
 
-import {initialState, movie} from '../../reducers/movie';
+import {initialState} from '../../reducers/movie';
 
 import FilmPage from '../FilmPage';
 
