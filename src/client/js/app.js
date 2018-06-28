@@ -5,8 +5,13 @@ import {Provider} from 'react-redux';
 
 import '../styles/common.scss';
 
-import {store} from './configureStore';
+import configureStore from './configureStore';
 import App from './components/App';
+
+// Grab the state from a global variable injected into the server-generated HTML
+const store = configureStore(window.PRELOADED_STATE);
+// Allow the passed state to be garbage-collected
+delete window.PRELOADED_STATE;
 
 ReactDOM.hydrate((
   <Provider store={store}>

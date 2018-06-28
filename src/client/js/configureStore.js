@@ -5,13 +5,17 @@ import reducers from './reducers/index';
 import saga from './sagas/sagas';
 
 const sagaMiddleware = createSagaMiddleware();
-const store = createStore(
-  reducers,
-  applyMiddleware(sagaMiddleware)
-);
 
-sagaMiddleware.run(saga, store.dispatch, store.getState);
+export default (initialState) => {
+  const store = createStore(
+    reducers,
+    initialState,
+    applyMiddleware(sagaMiddleware)
+  );
 
-export {
-  store
+  store.runSaga = sagaMiddleware.run;
+  store.close = () => store.dispatch(END);
+  sagaMiddleware.run(saga, store.dispatch, store.getState);
+
+  return store;
 };
