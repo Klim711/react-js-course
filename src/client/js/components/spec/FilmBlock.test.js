@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {BrowserRouter} from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 import FilmBlock from '../FilmBlock';
 
@@ -12,11 +12,11 @@ describe('FilmBlock component', () => {
       title: 'someTitle',
       genre: 'someGenre',
       year: 'someYear',
-    }
+    };
     const renderedValue = renderer.create(
       <BrowserRouter>
         <FilmBlock instance={instance}/>
-      </BrowserRouter>
+      </BrowserRouter>,
     ).toJSON();
 
     expect(renderedValue).toMatchSnapshot();

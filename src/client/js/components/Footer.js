@@ -1,13 +1,9 @@
-import React, {PureComponent} from 'react';
+import React from 'react';
 
-class Footer extends PureComponent {
-  render() {
-    return (
-      <footer className="row page-footer">
-        <div className="title">netflixroulette</div>
-      </footer>
-    );
-  }
-}
+const Footer = () => (
+  <footer className="row page-footer">
+    <div className="title">netflixroulette</div>
+  </footer>
+);
 
 export default Footer;

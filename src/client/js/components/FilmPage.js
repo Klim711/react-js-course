@@ -1,9 +1,9 @@
-import React, {PureComponent} from 'react';
-import {connect} from 'react-redux';
+import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
 
-import {isArray} from 'util';
+import { isArray } from 'util';
 
-import {fetchMovie} from '../actions/movie';
+import { fetchMovie } from '../actions/movie';
 
 import Footer from './Footer';
 import InfoPanel from './InfoPanel';
@@ -11,7 +11,7 @@ import RelatedFilms from './RelatedFilms';
 
 class FilmPage extends PureComponent {
   static getDerivedStateFromProps(props) {
-    let id = props.match.params.id;
+    const { id } = props.match.params;
     const currentMovie = props.movie;
 
     if (!currentMovie || (String(currentMovie.id) !== id)) {
@@ -20,21 +20,21 @@ class FilmPage extends PureComponent {
 
     return null;
   }
-  render() {
-    const relatedMovies = this.props.relatedMovies;
-    const film = this.props.movie;
-    const criteria = this.props.criteria;
 
-    let infoPanel = film ? <InfoPanel film={film}/> : null;
+  render() {
+    const { relatedMovies } = this.props;
+    const film = this.props.movie;
+    const { criteria } = this.props;
+
+    const infoPanel = film ? <InfoPanel film={film}/> : null;
 
     let relatedFilms;
     if (film) {
       let criteriaValue = film[criteria];
       if (isArray(criteriaValue)) {
-        criteriaValue = criteriaValue[0];
+        [criteriaValue] = criteriaValue;
       }
-      relatedFilms = 
-        <RelatedFilms criteria={criteria}
+      relatedFilms = <RelatedFilms criteria={criteria}
                       criteriaValue={criteriaValue}
                       items={relatedMovies}/>;
     }
@@ -49,7 +49,7 @@ class FilmPage extends PureComponent {
   }
 }
 
-function mapStateToProps ({movie}){
+function mapStateToProps({ movie }) {
   return {
     movie: movie.item,
     relatedMovies: movie.relatedMovies.items,
@@ -57,7 +57,7 @@ function mapStateToProps ({movie}){
   };
 }
 
-function mapDispatchToProps (dispatch){
+function mapDispatchToProps(dispatch) {
   return {
     getMovie: (id) => {
       dispatch(fetchMovie(id));

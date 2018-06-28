@@ -12,30 +12,26 @@ const initialState = {
 };
 
 export default function movies(state = initialState, action) {
-  const newState = {...state};
+  const newState = { ...state };
 
   switch (action.type) {
     case 'SET_SEARCH_VALUE':
       return {
         ...state,
         searchValue: action.searchValue,
-      }
+      };
     case 'SET_SORT_BY':
-      const newActiveSort = action.active;
-
-      if (newState.sortBy.values.includes(newActiveSort)) {
+      if (newState.sortBy.values.includes(action.active)) {
         newState.sortBy = {
           ...state.sortBy,
-          active: newActiveSort,
+          active: action.active,
         };
       }
 
       return newState;
     case 'SET_SEARCH_BY':
-      const newActiveSearchBy = action.active;
-
-      if (newState.searchBy.values.includes(newActiveSearchBy)) {
-        newState.searchBy.active = newActiveSearchBy;
+      if (newState.searchBy.values.includes(action.active)) {
+        newState.searchBy.active = action.active;
       }
 
       return newState;
@@ -46,9 +42,8 @@ export default function movies(state = initialState, action) {
     default:
       return newState;
   }
-};
+}
 
 export {
   initialState,
-  movies,
-}
+};

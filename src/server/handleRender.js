@@ -1,7 +1,7 @@
 import React from 'react';
-import {renderToString} from 'react-dom/server';
-import {StaticRouter} from 'react-router-dom';
-import {Provider} from 'react-redux';
+import { renderToString } from 'react-dom/server';
+import { StaticRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
 import saga from '../client/js/sagas/sagas';
 import App from '../client/js/components/App';
@@ -27,11 +27,11 @@ function renderFullPage(html, preloadedState) {
         </body>
       </html>
   `;
-};
+}
 
-function handleRender (req, res) {
+function handleRender(req, res) {
   const context = {};
-  
+
   const store = configureStore();
 
   const app = (
@@ -61,6 +61,6 @@ function handleRender (req, res) {
 
   // When the first render is finished, send the END action to redux-saga.
   store.close();
-};
+}
 
 export default handleRender;

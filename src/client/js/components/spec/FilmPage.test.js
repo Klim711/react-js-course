@@ -1,15 +1,15 @@
 import React from 'react';
-import {configure, shallow} from 'enzyme';
+import { configure, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import configureStore from 'redux-mock-store';
 
-import {initialState} from '../../reducers/movie';
+import { initialState } from '../../reducers/movie';
 
 import FilmPage from '../FilmPage';
 
-configure({adapter: new Adapter()});
+configure({ adapter: new Adapter() });
 
-describe('FilmPage component', function () {
+describe('FilmPage component', () => {
   let wrapper;
   const mockStore = configureStore();
   let store;

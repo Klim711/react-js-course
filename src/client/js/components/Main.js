@@ -1,17 +1,16 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 import FilmsContainer from './FilmsContainer';
 import FilmsHeader from './FilmsHeader';
 
-const Main = function(props) {
+const Main = (props) => {
   let header;
 
   if (!props.items.length) {
     header = '';
   } else {
-    header = 
-      <div className="row">
+    header = <div className="row">
         <FilmsHeader count={props.items.length}/>
       </div>;
   }
@@ -26,9 +25,9 @@ const Main = function(props) {
   );
 };
 
-function mapStateToProps (state){
+function mapStateToProps(state) {
   return {
     items: state.movies.items,
   };
-};
+}
 export default connect(mapStateToProps)(Main);

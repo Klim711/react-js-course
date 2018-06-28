@@ -1,35 +1,15 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React from 'react';
 
 import Main from './Main';
 import Footer from './Footer';
 import Header from './Header';
-import {fetchMovies} from '../actions/movies';
 
-class HomePage extends Component {
-  constructor(props) {
-    super();
+const HomePage = () => (
+  <div className="container">
+    <Header/>
+    <Main/>
+    <Footer/>
+  </div>
+);
 
-    props.getMovies();
-  }
-
-  render() {
-    return (
-      <div className="container">
-        <Header/>
-        <Main/>
-        <Footer/>
-      </div>
-    );
-  }
-}
-
-function mapDispatchToProps (dispatch){
-  return {
-    getMovies: () => {
-      dispatch(fetchMovies());
-    },
-  };
-}
-
-export default connect(null, mapDispatchToProps)(HomePage);
+export default HomePage;

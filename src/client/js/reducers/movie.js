@@ -6,8 +6,8 @@ const initialState = {
   },
 };
 
-export default function movie (state = initialState, action) {
-  const newState = {...state};
+export default function movie(state = initialState, action) {
+  const newState = { ...state };
 
   switch (action.type) {
     case 'SET_MOVIE':
@@ -19,7 +19,7 @@ export default function movie (state = initialState, action) {
         ...newState.relatedMovies,
         items: action.items,
       };
-      
+
       return newState;
     default:
       return newState;
@@ -28,5 +28,4 @@ export default function movie (state = initialState, action) {
 
 export {
   initialState,
-  movie,
-}
+};

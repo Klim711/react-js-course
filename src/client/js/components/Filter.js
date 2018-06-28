@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 export default class Filter extends Component {
   constructor() {
@@ -6,12 +6,14 @@ export default class Filter extends Component {
 
     this.setActive = this.setActive.bind(this);
   }
+
   setActive(event) {
     this.props.setActive(event.target.value);
   }
-  render () {
+
+  render() {
     const items = this.props.items.map((item) => {
-      let className = (item === this.props.value) ? 'active' : '';
+      const className = (item === this.props.value) ? 'active' : '';
 
       return (
         <button className={className}

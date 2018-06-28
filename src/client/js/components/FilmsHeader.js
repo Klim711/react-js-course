@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-import {setSortBy, fetchMovies} from '../actions/movies';
+import { setSortBy, fetchMovies } from '../actions/movies';
 import Filter from './Filter';
 
 class FilmsHeader extends Component {
@@ -20,14 +20,14 @@ class FilmsHeader extends Component {
   }
 }
 
-function mapStateToProps (state){
+function mapStateToProps(state) {
   return {
     items: state.movies.sortBy.values,
     active: state.movies.sortBy.active,
   };
-};
+}
 
-function mapDispatchToProps (dispatch){
+function mapDispatchToProps(dispatch) {
   return {
     setSorting: (value) => {
       dispatch(setSortBy(value));
@@ -35,5 +35,5 @@ function mapDispatchToProps (dispatch){
       dispatch(fetchMovies());
     },
   };
-};
+}
 export default connect(mapStateToProps, mapDispatchToProps)(FilmsHeader);
