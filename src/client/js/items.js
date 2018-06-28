@@ -1,4 +1,5 @@
 import { isArray } from "util";
+import fetch from 'node-fetch';
 
 const FILMS_SOURCE = 'http://react-cdp-api.herokuapp.com';
 

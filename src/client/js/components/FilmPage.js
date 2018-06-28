@@ -10,7 +10,7 @@ import InfoPanel from './InfoPanel';
 import RelatedFilms from './RelatedFilms';
 
 class FilmPage extends PureComponent {
-  static getDerivedStateFromProps (props) {
+  static getDerivedStateFromProps(props) {
     let id = props.match.params.id;
     const currentMovie = props.movie;
 

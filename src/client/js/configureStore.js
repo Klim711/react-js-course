@@ -1,4 +1,4 @@
-import createSagaMiddleware from 'redux-saga';
+import createSagaMiddleware, {END} from 'redux-saga';
 import {createStore, applyMiddleware } from 'redux';
 
 import reducers from './reducers/index';
