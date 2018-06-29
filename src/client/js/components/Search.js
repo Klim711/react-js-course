@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import injectSheet from 'react-jss';
 
 import Filter from './Filter';
 import { setSearchValue, setSearchBy, fetchMovies } from '../actions/movies';
+
+import styles from './styles/Search';
 
 class Search extends Component {
   constructor(props) {
@@ -18,12 +21,14 @@ class Search extends Component {
   }
 
   render() {
-    return (
-        <div className="search">
-          <div className="search__title">FIND YOUR MOVIE</div>
+    const { classes } = this.props;
 
-          <input type="text" ref={(input) => { this.input = input; }}></input>
-          <div className="search-buttons">
+    return (
+        <div className={classes.search}>
+          <div className='title'>FIND YOUR MOVIE</div>
+
+          <input className={classes.input} type="text" ref={(input) => { this.input = input; }}></input>
+          <div className={classes['search-buttons']}>
             <Filter content="Search By"
                     value={this.props.active}
                     items={this.props.values}
@@ -62,4 +67,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
+export default injectSheet(styles)(connect(mapStateToProps, mapDispatchToProps)(Search));
