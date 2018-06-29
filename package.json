@@ -19,6 +19,11 @@
     "webpack-cli": "^2.0.14"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^3.4.8",
+    "@storybook/addon-links": "^3.4.8",
+    "@storybook/addon-storyshots": "^3.4.8",
+    "@storybook/addons": "^3.4.8",
+    "@storybook/react": "^3.4.8",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.5",
@@ -51,11 +56,7 @@
     "redux-mock-store": "^1.5.1",
     "sass-loader": "^7.0.1",
     "style-loader": "^0.21.0",
-    "webpack-dev-server": "^3.1.3",
-    "@storybook/react": "^3.4.8",
-    "@storybook/addon-actions": "^3.4.8",
-    "@storybook/addon-links": "^3.4.8",
-    "@storybook/addons": "^3.4.8"
+    "webpack-dev-server": "^3.1.3"
   },
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server --open",
