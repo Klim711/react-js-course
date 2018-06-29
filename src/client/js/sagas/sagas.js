@@ -1,4 +1,4 @@
-import { call, apply, put, takeEvery, takeLatest, select } from 'redux-saga/effects'
+import { call, all, put, takeLatest, select } from 'redux-saga/effects'
 
 import * as Api from '../items';
 import { setMovies } from '../actions/movies';
@@ -23,9 +23,11 @@ function* fetchRelatedMovies({relatesTo}) {
 }
 
 function* saga() {
-  yield takeLatest('MOVIES_FETCH', fetchMovies);
-  yield takeEvery('MOVIE_FETCH', fetchMovie);
-  yield takeEvery('RELATED_MOVIES_FETCH', fetchRelatedMovies);
+  yield all([
+    yield takeLatest('MOVIES_FETCH', fetchMovies),
+    yield takeLatest('MOVIE_FETCH', fetchMovie),
+    yield takeLatest('RELATED_MOVIES_FETCH', fetchRelatedMovies),
+  ]);
 }
 
 export default saga;
