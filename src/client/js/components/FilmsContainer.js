@@ -1,8 +1,13 @@
+// @flow
 import React from 'react';
 import EmptyList from './EmptyList';
 import FilmBlock from './FilmBlock';
 
-const FilmsContainer = (props) => {
+type FilmsContainerProps = {
+  items: Array<any>;
+}
+
+const FilmsContainer = (props: FilmsContainerProps) => {
   let content;
 
   if (!props.items.length) {

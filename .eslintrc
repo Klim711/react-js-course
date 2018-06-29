@@ -20,13 +20,15 @@
       "react/jsx-uses-vars": "error"
   },
   "extends": [
-      "airbnb-base"
+      "airbnb-base",
+      "plugin:flowtype/recommended"
   ],
   "plugins": [
       "import",
       "react",
       "jsx-a11y",
-      "jest"
+      "jest",
+      "flowtype"
   ],
   "env": {
       "browser": true,

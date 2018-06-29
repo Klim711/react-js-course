@@ -1,7 +1,18 @@
+// @flow
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const FilmBlock = props => (
+type FilmBlockProps = {
+    instance: {
+      id: string;
+      poster_path: string;
+      title: string;
+      genre: string;
+      year: string;
+    }
+};
+
+const FilmBlock = (props: FilmBlockProps) => (
   <Link to={`/films/${props.instance.id}`}>
   <article className="film-block">
       <div className="film-image">

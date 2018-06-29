@@ -1,5 +1,10 @@
+// @flow
 import React from 'react';
 
-const EmptyList = props => <div className="empty-list">{props.content}</div>;
+type EmptyListProps = {
+  content: string;
+};
+
+const EmptyList = (props: EmptyListProps) => <div className="empty-list">{props.content}</div>;
 
 export default EmptyList;

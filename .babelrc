@@ -50,6 +50,28 @@
     "test": {
       "presets": ["env", "react"],
       "plugins": ["transform-es2015-modules-commonjs"]
+    },
+    "flow": {
+      "plugins": [
+        "transform-runtime",
+        "syntax-dynamic-import",
+        "transform-object-rest-spread",
+        "transform-strict-mode"
+      ],
+      "presets": [
+        ["react", "flow"],
+        [
+          "env",
+          {
+            "debug": true,
+            "targets": {
+              "browsers": [
+                "last 2 versions"
+              ]
+            }
+          }
+        ]
+      ]
     }
   }
 }
