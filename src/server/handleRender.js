@@ -1,5 +1,6 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
+import { JssProvider, SheetsRegistry } from 'react-jss';
 import { StaticRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
@@ -7,7 +8,7 @@ import saga from '../client/js/sagas/sagas';
 import App from '../client/js/components/App';
 import configureStore from '../client/js/configureStore';
 
-function renderFullPage(html, preloadedState) {
+function renderFullPage(html, preloadedState, sheets) {
   return `
       <!doctype html>
       <html>
@@ -15,6 +16,10 @@ function renderFullPage(html, preloadedState) {
           <meta charset=utf-8>
           <title>React Server Side Rendering</title>
           <link rel="stylesheet" href="/styles.css">
+          
+          <style type="text/css">
+            ${sheets.toString()}
+          </style>
         </head>
         <body>
           <div id="container">${html}</div>
@@ -34,12 +39,16 @@ function handleRender(req, res) {
 
   const store = configureStore();
 
+  const sheets = new SheetsRegistry();
+
   const app = (
-    <Provider store={store}>
-      <StaticRouter location={req.url} context={context} >
-        <App/>
-      </StaticRouter>
-    </Provider>
+    <JssProvider registry={sheets}>
+      <Provider store={store}>
+        <StaticRouter location={req.url} context={context}>
+          <App/>
+        </StaticRouter>
+      </Provider>
+    </JssProvider>
   );
 
   store.runSaga(saga).done.then(() => {
@@ -53,7 +62,7 @@ function handleRender(req, res) {
     // Grab the initial state from our Redux store
     const preloadedState = store.getState();
 
-    return res.send(renderFullPage(html, preloadedState));
+    return res.send(renderFullPage(html, preloadedState, sheets));
   });
 
   // Do first render, starts initial actions.
