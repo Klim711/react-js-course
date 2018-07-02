@@ -1,23 +1,25 @@
-import { call, all, put, takeLatest, select } from 'redux-saga/effects'
+import {
+  call, all, put, takeLatest, select,
+} from 'redux-saga/effects';
 
 import * as Api from '../items';
 import { setMovies } from '../actions/movies';
 import { setMovie, setRelatedMovies } from '../actions/movie';
 
-function* fetchMovies(action) {
-  const searchInfo = yield select((state) => state.movies);
+function* fetchMovies() {
+  const searchInfo = yield select(state => state.movies);
   const movies = yield call(Api.getMovies, searchInfo);
   yield put(setMovies(movies));
 }
 
-function* fetchMovie({id}) {
+function* fetchMovie({ id }) {
   const movie = yield call(Api.getMovie, id);
   yield put(setMovie(movie));
-  yield put({type: 'RELATED_MOVIES_FETCH', relatesTo: movie});
+  yield put({ type: 'RELATED_MOVIES_FETCH', relatesTo: movie });
 }
 
-function* fetchRelatedMovies({relatesTo}) {
-  const {criteria} = yield select((state) => state.movie.relatedMovies);
+function* fetchRelatedMovies({ relatesTo }) {
+  const { criteria } = yield select(state => state.movie.relatedMovies);
   const movies = yield call(Api.getRelated, criteria, relatesTo);
   yield put(setRelatedMovies(movies));
 }

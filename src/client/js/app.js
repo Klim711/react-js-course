@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
-import {BrowserRouter} from 'react-router-dom';
-import {Provider} from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
 import '../styles/common.scss';
 
@@ -19,4 +19,4 @@ ReactDOM.hydrate((
       <App/>
     </BrowserRouter>
   </Provider>
-), document.getElementById("container"));
+), document.getElementById('container'));

@@ -1,0 +1,41 @@
+{
+  "parserOptions": {
+      "ecmaVersion": 9,
+      "sourceType": "module",
+      "ecmaFeatures": {
+          "jsx": true,
+          "modules": true
+      }
+  },
+  "rules": {
+      "max-len": [
+          1,
+          120,
+          2,
+          {
+              "ignoreComments": true
+          }
+      ],
+      "react/jsx-uses-react": "error",
+      "react/jsx-uses-vars": "error"
+  },
+  "extends": [
+      "airbnb-base",
+      "plugin:flowtype/recommended"
+  ],
+  "plugins": [
+      "import",
+      "react",
+      "jsx-a11y",
+      "jest",
+      "flowtype"
+  ],
+  "env": {
+      "browser": true,
+      "es6": true,
+      "jest/globals": true
+  },
+  "globals": {
+      "document": false
+  }
+}
